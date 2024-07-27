@@ -33,6 +33,15 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'appndkdemo'
+            keyPassword 'sincerely007'
+            storeFile file('appndkdemo.keystore')
+            storePassword 'sincerely007'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

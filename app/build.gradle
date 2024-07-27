@@ -1,8 +1,21 @@
 plugins {
     id 'com.android.application'
+    //APK中添加渠道信息，可以使用gradle-play-publisher插件
+    //id 'com.github.triplet.play' version '3.4.0'
 }
 
 android {
+    flavorDimensions "default"
+    productFlavors {
+        flavor1 {
+            dimension "default"
+            manifestPlaceholders = [CHANNEL_VALUE: "flavor1"]
+        }
+        flavor2 {
+            dimension "default"
+            manifestPlaceholders = [CHANNEL_VALUE: "flavor2"]
+        }
+    }
     compileSdk 32
 
     defaultConfig {

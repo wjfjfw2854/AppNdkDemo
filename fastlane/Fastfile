@@ -13,9 +13,8 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-default_platform(:android)
-
-platform :android do
+#default_platform(:android)
+#platform :android do
 #  desc "Runs all the tests"
 #  lane :test do
 #    gradle(task: "test")
@@ -35,10 +34,12 @@ platform :android do
 #    gradle(task: "clean assembleRelease")
 #    upload_to_play_store
 #  end
+#end
 
+default_platform(:android)
+platform :android do
     lane :build_channel do |options|
         gradle(task: 'clean')
         gradle(task: 'assemble',build_type: options[:build_type],flavor: options[:flavor])
     end
-
 end

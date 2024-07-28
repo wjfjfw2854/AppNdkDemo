@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     //APK中添加渠道信息，可以使用gradle-play-publisher插件
-    //id 'com.github.triplet.play' version '3.4.0'
+    id 'com.github.triplet.play' version '3.10.1'
 }
 
 android {
@@ -26,11 +26,11 @@ android {
         versionName "1.0"
 
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        ndk {
-//            moduleName = "hello_jni_wjf"
-//            stl "stlport_static"
-//            ldLibs "log"
-//        }
+        ndk {
+            moduleName = "hello_jni_wjf"
+            stl "stlport_static"
+            ldLibs "log"
+        }
     }
 
     signingConfigs {
@@ -52,6 +52,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'cn.com.mobile.appndkdemo'
 }
 
 dependencies {

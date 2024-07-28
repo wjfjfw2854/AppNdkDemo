@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     count ++;
-                    tv.setText(getFromJNI(count,"你好！我来自jni-Hello i am from jni!--count="+count));
+//                    tv.setText(getFromJNI(count,"你好！我来自jni-Hello i am from jni!--count="+count));
+                    tv.setText("ndk的jenkins制包有问题，先不测试NKD，count="+count);
                 }
             });
         }

@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static {
-        System.loadLibrary("hello_jni_wjf");
-    }
+//    static {
+//        System.loadLibrary("hello_jni_wjf");
+//    }
 
     private int count;
     @Override
@@ -34,6 +34,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public native String getFromJNI(int count,String str);
+//    public native String getFromJNI(int count,String str);
 
 }

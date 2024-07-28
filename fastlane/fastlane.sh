@@ -1,1 +1,1 @@
-fastlane android build_channel build_type:release flavor:flavor2
+bundle exec fastlane android build_channel build_type:release flavor:flavor2

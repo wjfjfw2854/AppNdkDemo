@@ -16,12 +16,12 @@ android {
             manifestPlaceholders = [CHANNEL_VALUE: "flavor2"]
         }
     }
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "cn.com.mobile.appndkdemo"
         minSdk 21
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

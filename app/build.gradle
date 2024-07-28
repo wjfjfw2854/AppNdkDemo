@@ -39,13 +39,19 @@ android {
             keyPassword 'sincerely007'
             storeFile file('appndkdemo.keystore')
             storePassword 'sincerely007'
+            //防止因混淆问题出现Janus漏洞
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true //资源压缩
+//            zipAlignEnabled true//Zipalign优化
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

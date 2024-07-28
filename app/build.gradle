@@ -37,7 +37,8 @@ android {
         release {
             keyAlias 'appndkdemo'
             keyPassword 'sincerely007'
-            storeFile file('appndkdemo.keystore')
+//            storeFile file('appndkdemo.keystore')
+            storeFile file("$projectDir/appndkdemo.keystore")
             storePassword 'sincerely007'
             //防止因混淆问题出现Janus漏洞
             v1SigningEnabled true

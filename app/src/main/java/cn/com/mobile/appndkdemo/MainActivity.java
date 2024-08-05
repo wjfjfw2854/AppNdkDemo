@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // TODO: 2024/8/5制造1个崩溃
+//                    View v = null;
+//                    v.setBackgroundColor(0xff888888);
                     count ++;
                     tv.setText(getFromJNI(count,"你好！我来自jni-Hello i am from jni!--count="+count));
 //                    tv.setText("ndk的jenkins制包有问题，先不测试NKD，count="+count);

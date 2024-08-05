@@ -2,6 +2,7 @@
 # include <stdio.h>
 # include <iostream>
 # include <android/log.h>
+# include <exception>
 //#define LOGD(...)__android_log_print(ANDROID_LOG_DEBUG,"keymatch",__VA_ARGS__)
 #define LOGI(...)__android_log_print(ANDROID_LOG_INFO,"keymatch",__VA_ARGS__)
 
@@ -9,8 +10,10 @@ extern "C"
 {
     JNIEXPORT jstring JNICALL Java_cn_com_mobile_appndkdemo_MainActivity_getFromJNI(JNIEnv *env,jobject obj,jint count,jstring str){
 //        char buf[64];
+////        char buf[1];//打开这步就可创造1个cpp崩溃，可模拟xcrash抓取native(cpp)层信号日志
 //        sprintf(buf,"%d",count);
-//        return env -> NewStringUTF("你好！我来自jni-Hello i am from jni!开心开心的count="+buf);
+////        return env -> NewStringUTF("你好！我来自jni-Hello i am from jni!开心开心的count="+buf);
+////        return env -> NewStringUTF(buf);
 //        return env -> NewStringUTF(buf);
 
 

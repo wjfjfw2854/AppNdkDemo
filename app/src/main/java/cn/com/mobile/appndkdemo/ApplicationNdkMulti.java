@@ -33,12 +33,18 @@ public class ApplicationNdkMulti extends MultiDexApplication {
         ICrashCallback callback = new ICrashCallback() {
             @Override
             public void onCrash(String logPath, String emergency) throws Exception {
-                Log.e("wjf>>>>", "initXCrash onCrash --logPath= "+logPath+"--emergency= "+emergency);
+                Log.e("wjf>>>>", "initXCrash callback onCrash --logPath= " + logPath + "--emergency= " + emergency);
                 if (!TextUtils.isEmpty(emergency)) {
                     // TODO: 2024/8/2 上传到服务器后删除日志
                 } else {
 
                 }
+            }
+        };
+        ICrashCallback anrFastCallback = new ICrashCallback() {
+            @Override
+            public void onCrash(String logPath, String emergency) throws Exception {
+                Log.e("wjf>>>>", "initXCrash anrFastCallback onCrash --logPath= " + logPath + "--emergency= " + emergency);
             }
         };
         XCrash.InitParameters pts = new XCrash.InitParameters();
@@ -48,17 +54,18 @@ public class ApplicationNdkMulti extends MultiDexApplication {
                 .setJavaDumpAllThreadsWhiteList(new String[]{"^main$", "^Binder:.*", ".*Finalizer.*"})
                 .setJavaDumpAllThreadsCountMax(10)
                 .setJavaCallback(callback)
-                .setNativeRethrow(false)
+                .setNativeRethrow(true)
                 .setNativeLogCountMax(10)
                 .setNativeDumpAllThreadsWhiteList(new String[]{"^xcrash\\.sample$", "^Signal Catcher$", "^Jit thread pool$", ".*(R|r)ender.*", ".*Chrome.*"})
                 .setNativeDumpAllThreadsCountMax(10)
-        .setNativeCallback(callback)
-                .setAnrRethrow(false)
+                .setNativeCallback(callback)
+                .setAnrRethrow(true)
                 .setAnrLogCountMax(10)
-//        .setAnrCallback(callback)
+                .setAnrCallback(callback)
+//                .setAnrFastCallback(anrFastCallback)
                 .setPlaceholderCountMax(3)
-                .setPlaceholderSizeKb(512)
-                .setLogFileMaintainDelayMs(400);
-        xcrash.XCrash.init(this,pts);
+                .setPlaceholderSizeKb(128)
+                .setLogFileMaintainDelayMs(300);
+        xcrash.XCrash.init(this, pts);
     }
 }

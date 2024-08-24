@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import cisetech.mobile.inspectdatalibrary.helpers.InspectDataHelper;
+import cisetech.mobile.inspectdatalibrary.lis.Callback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 //        createAnr();
         setContentView(R.layout.activity_main);
         txtOpt();
+        InspectDataHelper.getInstance(ApplicationNdkMulti.getInstance()).initData(this);
     }
 
     private void txtOpt() {
@@ -35,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
                     count ++;
                     tv.setText(getFromJNI(count,"你好！我来自jni-Hello i am from jni!--count="+count));
 //                    tv.setText("ndk的jenkins制包有问题，先不测试NKD，count="+count);
+
+                    String url = "http://www.baidu.com";
+                    InspectDataHelper.getInstance(ApplicationNdkMulti.getInstance()).inspectThenCallBack(new Callback<String>() {
+
+                        @Override
+                        public void onFailure(String str) {
+                            Log.e("cisetech>>>>", "MainActivity onFailure: " + str);
+                        }
+
+                        @Override
+                        public void onSuccess(String str) {
+                            Log.e("cisetech>>>>", "MainActivity onSuccess: " + str);
+                        }
+                    },ApplicationNdkMulti.getInstance(),url);
                 }
             });
         }

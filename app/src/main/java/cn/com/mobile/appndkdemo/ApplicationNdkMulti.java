@@ -6,8 +6,12 @@ import android.util.Log;
 
 import androidx.multidex.MultiDexApplication;
 
-import xcrash.ICrashCallback;
-import xcrash.XCrash;
+import com.tencent.mmkv.MMKV;
+
+import cisetech.mobile.libupload.utils.CrashCatchHelper;
+
+//import xcrash.ICrashCallback;
+//import xcrash.XCrash;
 
 /**
  * Created by wujunfeng on 2024/8/5
@@ -15,9 +19,17 @@ import xcrash.XCrash;
  */
 public class ApplicationNdkMulti extends MultiDexApplication {
 
+    private static ApplicationNdkMulti instance;
+
+    public static ApplicationNdkMulti getInstance() {
+        return instance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
+        CrashCatchHelper.getInstance().init(this);
     }
 
     @Override
@@ -30,7 +42,7 @@ public class ApplicationNdkMulti extends MultiDexApplication {
         /**
          * java,native,anr通用回调
          * */
-        ICrashCallback callback = new ICrashCallback() {
+        /*ICrashCallback callback = new ICrashCallback() {
             @Override
             public void onCrash(String logPath, String emergency) throws Exception {
                 Log.e("wjf>>>>", "initXCrash callback onCrash --logPath= " + logPath + "--emergency= " + emergency);
@@ -66,6 +78,6 @@ public class ApplicationNdkMulti extends MultiDexApplication {
                 .setPlaceholderCountMax(3)
                 .setPlaceholderSizeKb(128)
                 .setLogFileMaintainDelayMs(300);
-        xcrash.XCrash.init(this, pts);
+        xcrash.XCrash.init(this, pts);*/
     }
 }
